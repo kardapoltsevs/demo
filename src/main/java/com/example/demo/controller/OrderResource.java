@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.controller;
 
+import com.example.demo.order.Order;
 import jakarta.validation.Valid;
 import lombok.Value;
 import org.slf4j.LoggerFactory;

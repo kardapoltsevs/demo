@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.customer;
 
+import com.example.demo.order.Order;
+import jakarta.validation.Valid;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -21,7 +23,7 @@ public class Customer implements Serializable {
     @Field("orders")
     private Set<Order> orders = new HashSet<>();
 
-    public Customer addOrder(Order order) {
+    public Customer addOrder(com.example.demo.customer.@Valid Order order) {
         this.orders.add(order);
         return this;
     }
