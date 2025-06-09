@@ -1,5 +1,6 @@
-package com.example.demo.controller;
+package com.example.demo;
 
+import com.example.demo.controller.HealthStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
