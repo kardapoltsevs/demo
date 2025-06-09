@@ -22,7 +22,7 @@ import java.time.Instant;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Order {
+public class Order extends com.example.demo.customer.Order {
     private static final long serialVersionUID = 1L;
 
     @Id

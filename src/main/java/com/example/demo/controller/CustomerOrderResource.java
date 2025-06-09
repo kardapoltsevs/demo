@@ -1,19 +1,23 @@
 package com.example.demo.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import com.example.demo.customer.Customer;
 import com.example.demo.customer.CustomerRepository;
 import com.example.demo.customer.Order;
 import jakarta.validation.Valid;
-import lombok.Value;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.Optional;
-import java.util.logging.Logger;
 
+
+@Component
 @RestController
 @RequestMapping("/api/v1")
 public class CustomerOrderResource {

@@ -1,6 +1,5 @@
 package com.example.demo.customer;
 
-import com.example.demo.order.Order;
 import jakarta.validation.Valid;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +20,7 @@ public class Customer implements Serializable {
     @Id
     private String id;
     @Field("orders")
-    private Set<Order> orders = new HashSet<>();
+    private Set<@Valid Order> orders = new HashSet<com.example.demo.customer.@Valid Order>();
 
     public Customer addOrder(com.example.demo.customer.@Valid Order order) {
         this.orders.add(order);

@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.order.Order;
+import com.example.demo.service.OrderService;
 import jakarta.validation.Valid;
-import lombok.Value;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
+import org.slf4j.Logger;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/v1")
 public class OrderResource {
-    private final Logger log = LoggerFactory.getLogger(OrderResource.class);
+    private final Logger log = (Logger) LoggerFactory.getLogger(OrderResource.class);
 
     private static final String ENTITY_NAME = "order";
 
@@ -38,12 +39,12 @@ public class OrderResource {
     }
     @PostMapping("/orders")
     @Transactional
-    public ResponseEntity<Order> createOrder(@Valid @RequestBody Order order) throws URISyntaxException {
+    public ResponseEntity<com.example.demo.customer.Order> createOrder(@Valid @RequestBody Order order) throws URISyntaxException {
         log.debug("REST request to save Order : {}", order);
         if (order.getId() != null) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "A new order cannot already have an ID");
         }
-        final var result = orderRepository.save(order);
+        final com.example.demo.customer.Order result = orderRepository.save(order);
         orderService.createOrder(result);
 
         HttpHeaders headers = new HttpHeaders();

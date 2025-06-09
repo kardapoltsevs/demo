@@ -2,21 +2,25 @@ package com.example.demo.controller;
 
 import com.example.demo.customer.Customer;
 import com.example.demo.customer.CustomerRepository;
+import com.example.demo.order.Order;
+import com.example.demo.service.OrderService;
 import jakarta.validation.Valid;
-import lombok.Value;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
+import org.slf4j.Logger;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.http.HttpHeaders;
-import java.util.logging.Logger;
+
 
 @RestController
 @RequestMapping("/api/v1")
@@ -25,6 +29,7 @@ public class CustomerResource {
 
     private static final String ENTITY_NAME = "customer";
 
+    //@Value("${spring.application.name}")
     @Value("${spring.application.name}")
     private String applicationName;
 
